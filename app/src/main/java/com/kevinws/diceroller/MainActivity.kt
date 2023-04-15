@@ -11,7 +11,6 @@ class Dice(private val numSides: Int) {
     }
 }
 
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,8 +18,9 @@ class MainActivity : AppCompatActivity() {
 
         val rollButton: Button = findViewById(R.id.button)
         rollButton.setOnClickListener {
-            val resultTextView: TextView = findViewById(R.id.textView)
-            resultTextView.text = "6"
+            rollDice()
+//            val resultTextView: TextView = findViewById(R.id.textView)
+//            resultTextView.text = "6"
 
 //            val toast = Toast.makeText(this, "Dice Rolled!",
 //                Toast.LENGTH_SHORT)
@@ -28,5 +28,15 @@ class MainActivity : AppCompatActivity() {
 //            Toast.makeText(this, "Dice Rolled!", Toast.LENGTH_SHORT).show()
         }
 
+    }
+
+    private fun rollDice() {
+        // Create new Dice object with 6 sides and roll it
+        val dice = Dice(6)
+        val diceRoll = dice.roll()
+
+        // Update the screen with the dice roll
+        val resultTextView: TextView = findViewById(R.id.textView)
+        resultTextView.text = diceRoll.toString()
     }
 }
